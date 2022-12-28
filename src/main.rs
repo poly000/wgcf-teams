@@ -55,6 +55,8 @@ async fn main() -> Result<()> {
         client
             .execute(req).await
             .context("Request to cloudflare API failed")?;
+    println!("{}", raw_resp.text().await.unwrap());
+    /*
     let resp: CFResp<RegistrationResult> =
         raw_resp
             .json().await
@@ -66,6 +68,7 @@ async fn main() -> Result<()> {
     let wg_config = result.to_wg_config(privkey)?;
 
     println!("{wg_config}");
+    */
     Ok(())
 }
 
